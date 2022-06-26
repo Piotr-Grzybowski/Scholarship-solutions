@@ -6,11 +6,12 @@ import {
   promiseIgnoreErrors,
   promiseIgnoreErrorsAsync,
   promiseLast,
+  promiseLastAsync,
 } from "./PromiseMethods";
 
 describe("Promise methods", () => {
   // some dummy promises for tests
-  const promise1 = Promise.resolve(2);
+  const promise1 = Promise.resolve(1);
   const promise2 = Promise.resolve(true);
   const promise3 = Promise.resolve(false);
   const promise4 = Promise.resolve("Some text!");
@@ -107,8 +108,8 @@ describe("Promise methods", () => {
   });
 
   describe("Promise ignore all errors function", () => {
-    it("should return the same result as as hardcoded solution", async () => {
-      const expectedResult = [2, true, false, "awesome", "Some text!", "foo"];
+    it("should return the same result as as hardcoded solution when there is rejected promise", async () => {
+      const expectedResult = [1, true, false, "awesome", "Some text!", "foo"];
       const rejectedPromise = new Promise((resolve, reject) => {
         setTimeout(reject, 1000, "Bad robot");
       });
@@ -128,15 +129,25 @@ describe("Promise methods", () => {
 
   describe("Promise last function", () => {
     it("should return the same result as hardcoded solution when all promises resolved", async () => {
-      expect.assertions(1);
+      // expect.assertions(2);
+      const arrayOfPromises = [
+        promise1,
+        promise2,
+        promise4,
+        promise5,
+        promise6,
+      ];
       const expectedResult = "awesome";
 
-      await expect(promiseLast(arrayOfResolvedPromises)).resolves.toEqual(
+      await expect(promiseLast(arrayOfPromises)).resolves.toEqual(
+        expectedResult
+      );
+      await expect(promiseLastAsync(arrayOfPromises)).resolves.toEqual(
         expectedResult
       );
     });
     it("should return the same result as hardcoded solution when there is a rejected promise", async () => {
-      expect.assertions(1);
+      expect.assertions(2);
       const expectedResult = "Bad robot";
       const rejectedPromise = new Promise((resolve, reject) => {
         setTimeout(reject, 1000, "Bad robot");
@@ -149,6 +160,9 @@ describe("Promise methods", () => {
       await expect(promiseLast(arrayOfPromisesWithRejection)).rejects.toEqual(
         expectedResult
       );
+      await expect(
+        promiseLastAsync(arrayOfPromisesWithRejection)
+      ).rejects.toEqual(expectedResult);
     });
   });
 });

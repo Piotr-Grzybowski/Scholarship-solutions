@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.promiseLast = exports.promiseIgnoreErrorsAsync = exports.promiseIgnoreErrors = exports.promiseRaceAsync = exports.promiseRace = exports.promiseAllAsync = exports.promiseAll = void 0;
+exports.promiseLastAsync = exports.promiseLast = exports.promiseIgnoreErrorsAsync = exports.promiseIgnoreErrors = exports.promiseRaceAsync = exports.promiseRace = exports.promiseAllAsync = exports.promiseAll = void 0;
 exports.promiseAll = function (arrayOfPromises) {
     var arrayOfResults = [];
     var resolvedPromises = 0;
@@ -82,22 +82,16 @@ exports.promiseAllAsync = function (arrayOfPromises) {
     });
 };
 exports.promiseRace = function (arrayOfPromises) {
-    var returnValue;
     return new Promise(function (resolve, reject) {
         arrayOfPromises.forEach(function (promise) {
             Promise.resolve(promise)
                 .then(function (result) {
                 resolve(result);
-                return;
             })
                 .catch(function (err) {
                 reject(err);
-                return;
             });
         });
-    }).catch(function (err) {
-        throw err;
-        return;
     });
 };
 exports.promiseRaceAsync = function (arrayOfPromises) {
@@ -189,10 +183,41 @@ exports.promiseLast = function (arrayOfPromises) {
             })
                 .catch(function (err) {
                 counter++;
-                error = err;
                 if (counter === arrayOfPromises.length)
-                    reject(error);
+                    reject(err);
             });
         });
+    });
+};
+exports.promiseLastAsync = function (arrayOfPromises) {
+    var counter = 0;
+    var error;
+    return new Promise(function (resolve, reject) {
+        arrayOfPromises.forEach(function (promise) { return __awaiter(void 0, void 0, void 0, function () {
+            var result, err_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Promise.resolve(promise)];
+                    case 1:
+                        result = _a.sent();
+                        counter++;
+                        if (counter === arrayOfPromises.length) {
+                            if (error)
+                                reject(error);
+                            resolve(result);
+                        }
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_4 = _a.sent();
+                        counter++;
+                        if (counter === arrayOfPromises.length)
+                            reject(err_4);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); });
     });
 };
