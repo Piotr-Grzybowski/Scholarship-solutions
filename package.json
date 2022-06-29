@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./filterWith",
+    "test": "jest ./Starlink2.0",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -19,8 +19,10 @@
   "homepage": "https://github.com/Piotr-Grzybowski/Scholarship-solutions#readme",
   "devDependencies": {
     "@types/jest": "^28.1.3",
+    "@types/uuid": "^8.3.4",
     "jest": "^28.1.1",
     "ts-jest": "^28.0.5",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "uuid": "^8.3.2"
   }
 }
