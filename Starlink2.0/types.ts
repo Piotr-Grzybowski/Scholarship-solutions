@@ -30,7 +30,7 @@ export interface IGroup {
 export interface ISatelliteHandler {
   listOfSatellites: Array<ISatellite>,
   addSatellite(satellite: ISatellite): void,
-  deleteSatellite(satellite: ISatellite): void, // TODO remove satellite from all groups as well
+  deleteSatellite(satellite: ISatellite): void,
   findSatellite(satellite: ISatellite): ISatellite | false,
   changePropertyValue(satellite: ISatellite, property: changeablePropertiesForOperator, value: changeableValues): void,
 }
@@ -57,6 +57,7 @@ export interface IOperator {
   addGroup(group: IGroup): void,
   deleteGroup(group: IGroup): void,
   changeGroupName(group: IGroup, name: string): void,
+  findGroup(group: IGroup): false | IGroup;
   findSatelliteInGroup(group: IGroup, satellite: ISatellite): ISatellite | false,
   addSatelliteToTheGroup(group: IGroup, satellite: ISatellite): void,
   deleteSatelliteFromGroup(group: IGroup, satellite: ISatellite): void,

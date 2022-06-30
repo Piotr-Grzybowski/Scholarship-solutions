@@ -31,6 +31,9 @@ var Operator = /** @class */ (function () {
     Operator.prototype.changeGroupName = function (group, name) {
         this.groupHandler.changeGroupName(group, name);
     };
+    Operator.prototype.findGroup = function (group) {
+        return this.groupHandler.findGroup(group);
+    };
     Operator.prototype.addSatelliteToTheGroup = function (group, satellite) {
         this.groupHandler.addSatelliteToTheGroup(group, satellite);
     };

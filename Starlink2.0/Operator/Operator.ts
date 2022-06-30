@@ -36,6 +36,9 @@ export class Operator implements IOperator {
   changeGroupName(group: IGroup, name: string): void {
     this.groupHandler.changeGroupName(group, name);
   }
+  findGroup(group: IGroup): false | IGroup {
+    return this.groupHandler.findGroup(group);
+  }
   addSatelliteToTheGroup(group: IGroup, satellite: ISatellite): void {
     this.groupHandler.addSatelliteToTheGroup(group, satellite);
   }

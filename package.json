@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./Starlink2.0",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "repository": {

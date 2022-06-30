@@ -37,9 +37,13 @@ var Overlord = /** @class */ (function (_super) {
     };
     Overlord.prototype.changeSystemStatus = function (value) {
         var _this = this;
-        this.satelliteHandler.listOfSatellites.forEach(function (satellite) {
-            _this.changeSatelliteStatus(satellite, value);
-        });
+        if (this.satelliteHandler.listOfSatellites.length !== 0) {
+            this.satelliteHandler.listOfSatellites.forEach(function (satellite) {
+                _this.changeSatelliteStatus(satellite, value);
+            });
+        }
+        else
+            throw new Error("List of satellites is empty!");
     };
     return Overlord;
 }(Operator_1.Operator));

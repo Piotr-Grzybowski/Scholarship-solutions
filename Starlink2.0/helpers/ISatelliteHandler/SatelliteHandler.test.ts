@@ -27,11 +27,13 @@ describe("Satellite handler helper class", () => {
     expect(handler.listOfSatellites).toHaveLength(0);
     expect(handler.findSatellite(satellite)).toBe(false);
   });
-  it("all methods should work", () => {
+  it("should add and delete satellite", () => {
     handler.addSatellite(satellite);
     expect(handler.findSatellite(satellite)).toBe(satellite);
     handler.deleteSatellite(satellite);
     expect(handler.findSatellite(satellite)).toBe(false);
+  });
+  it("should change properties of the satellite", () => {
     handler.addSatellite(satellite);
     handler.changePropertyValue(satellite, "altitude", 1000);
     handler.changePropertyValue(satellite, "coordinates", {

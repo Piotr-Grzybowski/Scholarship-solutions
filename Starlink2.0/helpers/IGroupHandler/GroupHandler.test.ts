@@ -38,28 +38,35 @@ describe("Group handler helper class", () => {
     expect(handler.listOfGroups).toHaveLength(0);
     expect(handler.findGroup(group)).toBe(false);
   });
-  it("all methods should work", () => {
+  it("should change name of the groupm, add groups and next satellite to the group", () => {
     handler.addGroup(group);
     handler.addGroup(group2);
     expect(handler.findGroup(group)).toBe(group);
     expect(handler.findSatelliteInGroup(group, satellite)).toBe(false);
-
     handler.changeGroupName(group, "Just satties");
     handler.addSatelliteToTheGroup(group, satellite);
     expect(group.groupName).toBe("Just satties");
     expect(handler.findSatelliteInGroup(group, satellite)).toBe(satellite);
-
-    handler.addSatelliteToTheGroup(group2, satellite);
-    handler.deleteSatelliteFromAllGroups(satellite);
-    expect(group.listOfSatellites).toHaveLength(0);
-    expect(group2.listOfSatellites).toHaveLength(0);
-
+  });
+  it("should delete satellite from group", () => {
+    handler.addGroup(group2);
     handler.addSatelliteToTheGroup(group2, satellite2);
     expect(handler.findSatelliteInGroup(group2, satellite2)).toBe(satellite2);
     handler.deleteSatelliteFromGroup(group2, satellite2);
     expect(group2.listOfSatellites).toHaveLength(0);
+  });
+  it("should delete satellite from all groups", () => {
+    handler.addGroup(group);
+    handler.addGroup(group2);
+    handler.addSatelliteToTheGroup(group2, satellite);
+    handler.addSatelliteToTheGroup(group, satellite);
+    handler.deleteSatelliteFromAllGroups(satellite);
+    expect(group.listOfSatellites).toHaveLength(0);
+    expect(group2.listOfSatellites).toHaveLength(0);
+  });
+  it("should delete group from groups list", () => {
+    handler.addGroup(group);
     expect(handler.findGroup(group)).toBe(group);
-
     handler.deleteGroup(group);
     expect(handler.findGroup(group)).toBe(false);
   });
