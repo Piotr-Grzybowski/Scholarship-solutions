@@ -18,7 +18,28 @@ export const mapFn = <T, U>(
   return newArray;
 };
 
-// export const entriesFn = (array) => {};
+/**
+ * Method entries() returns iterator with method next that lets us access next element
+ * Every element has format {done: false/true, value: [index, value]}
+ * Value of done define if iteration is finished or not
+ * Under value property we can find an array with index and value of current element
+ */
+export const entriesFn = <T>(array: Array<T>) => {
+  const newArray = [];
+
+  for (let index = 0; index < array.length; index++) {
+    newArray.push([index, array[index]]);
+  }
+
+  return newArray[Symbol.iterator]();
+};
+
+/**
+ * Solution of method entries() but using generator instead Symbol.iterator method
+ */
+export function* entriesFnGen<T>(array: Array<T>) {
+  for (let i = 0; i < array.length; i++) yield [i, array[i]];
+}
 
 export const filterFn = <T>(
   array: Array<T>,
@@ -34,15 +55,15 @@ export const filterFn = <T>(
 };
 
 export const reduceFn = <T, U>(
-  array: T[],
-  callback: (accumulator: T | U, element: T, index: number, array: T[]) => U,
+  array: Array<T>,
+  callback: (accumulator: T, element: T, index: number, array: T[]) => T,
   initial?: T
 ): T | U => {
   if (array.length < 1 && !initial) {
     throw new Error("Type Error");
   }
-  let accumulator;
-  initial ? (accumulator = initial) : (accumulator = array[0]);
+  let accumulator: T | U;
+  accumulator = initial || array[0];
   for (let i = initial ? 0 : 1; i < array.length; i++) {
     accumulator = callback(accumulator, array[i], i, array);
   }
