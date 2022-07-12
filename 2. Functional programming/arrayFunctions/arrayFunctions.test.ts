@@ -3,7 +3,7 @@ import {
   mapFn,
   // entriesFn,
   filterFn,
-  // reduceFn,
+  reduceFn,
   everyFn,
   someFn,
 } from "./arrayFunctions";
@@ -44,7 +44,7 @@ describe("Testing array functions", () => {
     expect(implementedResult).toStrictEqual(nativeResult);
   });
 
-    it("should return the same array as native filter function", () => {
+  it("should return the same array as native filter function", () => {
     const implementedResult = filterFn(
       arrayForImplementedFunction,
       (element, index, array) => {
@@ -52,31 +52,45 @@ describe("Testing array functions", () => {
       }
     );
     const nativeResult = arrayForNativeFunction.filter((element) => {
-return element % 2 === 0;
+      return element % 2 === 0;
     });
 
     expect(implementedResult).toStrictEqual(nativeResult);
   });
 
-  it('should return the same value as native every function', () => {
-    const implementedResult = everyFn(arrayForImplementedFunction, (element, index, array) => {
-      return element < 6
-    });
+  it("should return the same value as native every function", () => {
+    const implementedResult = everyFn(
+      arrayForImplementedFunction,
+      (element, index, array) => {
+        return element < 6;
+      }
+    );
     const nativeResult = arrayForNativeFunction.every((element) => {
-      return element < 6
-    })
-
-    expect(nativeResult).toStrictEqual(implementedResult)
-  })
-
-  it('should return the same value as native every function', () => {
-    const implementedResult = someFn(arrayForImplementedFunction, (element, index, array) => {
-      return element % 2 === 0
+      return element < 6;
     });
-    const nativeResult = arrayForNativeFunction.some((element) => {
-      return element % 2 === 0
-    })
 
-    expect(nativeResult).toStrictEqual(implementedResult)
-  })
+    expect(nativeResult).toStrictEqual(implementedResult);
+  });
+
+  it("should return the same value as native every function", () => {
+    const implementedResult = someFn(
+      arrayForImplementedFunction,
+      (element, index, array) => {
+        return element % 2 === 0;
+      }
+    );
+    const nativeResult = arrayForNativeFunction.some((element) => {
+      return element % 2 === 0;
+    });
+
+    expect(nativeResult).toStrictEqual(implementedResult);
+  });
+
+  describe("Testing reduce function", () => {
+    it("should return the same result as native reduce function", () => {});
+
+    it("should return the same result as native reduce function when given initial value", () => {});
+
+    it("should throw an error when array is empty and no initial value", () => {});
+  });
 });

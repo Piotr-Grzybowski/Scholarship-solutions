@@ -26,21 +26,35 @@ export const filterFn = <T>(
 ): T[] => {
   let newArray: Array<T> = [];
   for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)){
+    if (callback(array[i], i, array)) {
       newArray.push(array[i]);
     }
   }
   return newArray;
 };
 
-export const reduceFn = (array, callback, inital) => {};
+export const reduceFn = <T, U>(
+  array: T[],
+  callback: (accumulator: T | U, element: T, index: number, array: T[]) => U,
+  initial?: T
+): T | U => {
+  if (array.length < 1 && !initial) {
+    throw new Error("Type Error");
+  }
+  let accumulator;
+  initial ? (accumulator = initial) : (accumulator = array[0]);
+  for (let i = initial ? 0 : 1; i < array.length; i++) {
+    accumulator = callback(accumulator, array[i], i, array);
+  }
+  return accumulator;
+};
 
 export const everyFn = <T>(
   array: Array<T>,
   callback: (element: T, index: number, array: Array<T>) => boolean
 ): boolean => {
   for (let i = 0; i < array.length; i++) {
-    if (!callback(array[i], i, array)){
+    if (!callback(array[i], i, array)) {
       return false;
     }
   }
@@ -52,7 +66,7 @@ export const someFn = <T>(
   callback: (element: T, index: number, array: Array<T>) => boolean
 ): boolean => {
   for (let i = 0; i < array.length; i++) {
-    if (!callback(array[i], i, array)){
+    if (!callback(array[i], i, array)) {
       return true;
     }
   }
