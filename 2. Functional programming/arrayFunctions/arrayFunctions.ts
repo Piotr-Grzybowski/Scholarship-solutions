@@ -20,10 +20,41 @@ export const mapFn = <T, U>(
 
 // export const entriesFn = (array) => {};
 
-// export const filterFn = (array, callback) => {};
+export const filterFn = <T>(
+  array: Array<T>,
+  callback: (element: T, index: number, array: Array<T>) => boolean
+): T[] => {
+  let newArray: Array<T> = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)){
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
+};
 
-// export const reduceFn = (array, callback, inital) => {};
+export const reduceFn = (array, callback, inital) => {};
 
-// export const everyFn = (array, callback) => {};
+export const everyFn = <T>(
+  array: Array<T>,
+  callback: (element: T, index: number, array: Array<T>) => boolean
+): boolean => {
+  for (let i = 0; i < array.length; i++) {
+    if (!callback(array[i], i, array)){
+      return false;
+    }
+  }
+  return true;
+};
 
-// export const someFn = (array, callback) => {};
+export const someFn = <T>(
+  array: Array<T>,
+  callback: (element: T, index: number, array: Array<T>) => boolean
+): boolean => {
+  for (let i = 0; i < array.length; i++) {
+    if (!callback(array[i], i, array)){
+      return true;
+    }
+  }
+  return false;
+};

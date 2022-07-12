@@ -2,10 +2,10 @@ import {
   forEachFn,
   mapFn,
   // entriesFn,
-  // filterFn,
+  filterFn,
   // reduceFn,
-  // everyFn,
-  // someFn,
+  everyFn,
+  someFn,
 } from "./arrayFunctions";
 
 describe("Testing array functions", () => {
@@ -43,4 +43,40 @@ describe("Testing array functions", () => {
 
     expect(implementedResult).toStrictEqual(nativeResult);
   });
+
+    it("should return the same array as native filter function", () => {
+    const implementedResult = filterFn(
+      arrayForImplementedFunction,
+      (element, index, array) => {
+        return element % 2 === 0;
+      }
+    );
+    const nativeResult = arrayForNativeFunction.filter((element) => {
+return element % 2 === 0;
+    });
+
+    expect(implementedResult).toStrictEqual(nativeResult);
+  });
+
+  it('should return the same value as native every function', () => {
+    const implementedResult = everyFn(arrayForImplementedFunction, (element, index, array) => {
+      return element < 6
+    });
+    const nativeResult = arrayForNativeFunction.every((element) => {
+      return element < 6
+    })
+
+    expect(nativeResult).toStrictEqual(implementedResult)
+  })
+
+  it('should return the same value as native every function', () => {
+    const implementedResult = someFn(arrayForImplementedFunction, (element, index, array) => {
+      return element % 2 === 0
+    });
+    const nativeResult = arrayForNativeFunction.some((element) => {
+      return element % 2 === 0
+    })
+
+    expect(nativeResult).toStrictEqual(implementedResult)
+  })
 });
