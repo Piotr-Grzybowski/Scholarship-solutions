@@ -1,5 +1,5 @@
 export type onOff = "on" | "off";
-export type changeableProperties = 'altitude' | 'coordinates' | "solarSail" | "signalBroadcast" | "satelliteStatus";
+export type changeableProperties =  'altitude' | 'coordinates' | "solarSail" | "signalBroadcast" | "satelliteStatus";
 export type changeablePropertiesForOperator = 'altitude' | 'coordinates' | "solarSail" | "signalBroadcast";
 export type changeableValues = number | coordinates | onOff;
 export type coordinates = {
@@ -16,6 +16,15 @@ export interface ISatellite {
   satelliteStatus: onOff,
   changeProperty(propertyName: changeableProperties, value: changeableValues): void,
 }
+// union type
+// exctract key Record<TChangeProperty, "solarSail">
+type TChangeProperty = {propertyName: "altitude", value: number} | {propertyName: "coordinates", value: coordinates}
+
+const fn = (props: TChangeProperty) => {
+  return 1
+}
+
+fn({propertyName:"coordinates", value:{}})
 
 export interface IGroup {
   readonly uuid: string,

@@ -1,4 +1,6 @@
 import { filterWith } from "./filterWith";
+import jest from "jest";
+// immer
 
 describe("Filter with function", () => {
   const data = [
@@ -152,11 +154,20 @@ describe("Filter with function", () => {
       ],
     },
   ];
-  it("should return empty array if searched phrase length 2 or less", () => {
-    const phrase = "yu";
-    expect(filterWith(data, phrase)).toEqual([]);
+
+  testing fitlerWith
+    should obsłużyć falsy phrase length -> true
+
+  it("should obsłużyć falsy phrase length", () => {
+    const mockedPhrase = "yu";
+    const output = filterWith(data, mockedPhrase)
+    const emptyArray = []
+    expect(output).toEqual(emptyArray);
   });
-  it("should return expected value for a name 'Cummings Baxter'", () => {
+
+  // bdd / 3x a
+
+  it("should return expected value for a name 'Cummings Baxter' 1 2 3", () => {
     const expectedValue = [
       {
         _id: "5e985a07feddae7617ac44f6",

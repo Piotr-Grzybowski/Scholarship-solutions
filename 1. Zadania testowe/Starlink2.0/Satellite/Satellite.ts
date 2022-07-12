@@ -1,6 +1,11 @@
 import { onOff, changeableProperties, ISatellite, changeableValues, coordinates} from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
+
+
+const changePropertyHandlers = {
+  altitude: (value ) => this.altitude = altitude
+}
 export class Satellite implements ISatellite {
   readonly uuid: string;
   altitude : number;
@@ -21,12 +26,12 @@ export class Satellite implements ISatellite {
     let solved;
     switch(propertyName) {
       case 'altitude': {
-        if (typeof value === 'number') {
-          this[propertyName] = value;
+
+        changeAltitute(123);
           solved = true;
         }
         break;
-      }
+
       case 'coordinates': {
         if (typeof value === 'object') {
           if (value.hasOwnProperty('latitude') && value.hasOwnProperty('longitude')) {
@@ -47,5 +52,10 @@ export class Satellite implements ISatellite {
       }
     }
     if (!solved) throw new Error("Wrong input data for property");
+  }
+
+
+  private changeAltitute(value) {
+    this.altitude = value
   }
 }

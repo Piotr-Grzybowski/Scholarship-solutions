@@ -21,10 +21,10 @@ export class Overlord extends Operator implements IOverlord {
     })
   }
   changeSystemStatus(value: onOff): void {
-    if (this.satelliteHandler.listOfSatellites.length !== 0) {
-      this.satelliteHandler.listOfSatellites.forEach(satellite => {
-        this.changeSatelliteStatus(satellite, value);
-      })
-    } else throw new Error("List of satellites is empty!")
+    if (this.satelliteHandler.listOfSatellites.length === 0) throw new Error("List of satellites is empty!")
+
+    this.satelliteHandler.listOfSatellites.forEach(satellite => {
+      this.changeSatelliteStatus(satellite, value);
+    })
   }
 }

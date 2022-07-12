@@ -3,13 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { SatelliteHandler } from "../helpers/ISatelliteHandler/SatelliteHandler";
 import { GroupHandler } from "../helpers/IGroupHandler/GroupHandler";
 
-
 export class Operator implements IOperator {
   readonly uuid: string;
   firstName: string;
   lastName: string;
-  protected satelliteHandler = new SatelliteHandler([]);
-  protected groupHandler = new GroupHandler([]);
+  // class hierarchy
 
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
@@ -18,6 +16,10 @@ export class Operator implements IOperator {
   }
 
   addSatellite(satellite: ISatellite): void {
+    SatelliteHandler.getInstance().addSatellite() -> [123]
+
+    SatelliteHandler.getInstance().addSatellite() [123,321]
+
     this.satelliteHandler.addSatellite(satellite);
   }
   deleteSatellite(satellite: ISatellite): void {

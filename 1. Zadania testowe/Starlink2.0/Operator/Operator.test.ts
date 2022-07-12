@@ -3,7 +3,7 @@ import { GroupOfSatellites } from "../GroupOfSatellites/GroupOfSatellites";
 import { Satellite } from "../Satellite/Satellite";
 import { IGroup, ISatellite, IOperator } from "../types";
 
-describe("Operator class ", () => {
+describe("testing Operator class ", () => {
   let operator: IOperator;
   let group1: IGroup;
   let group2: IGroup;
