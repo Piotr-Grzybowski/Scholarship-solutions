@@ -64,6 +64,7 @@ export const reduceFn = <T, U>(
   }
   let accumulator: T | U;
   accumulator = initial || array[0];
+
   for (let i = initial ? 0 : 1; i < array.length; i++) {
     accumulator = callback(accumulator, array[i], i, array);
   }

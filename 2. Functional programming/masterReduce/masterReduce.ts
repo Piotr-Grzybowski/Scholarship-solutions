@@ -22,7 +22,10 @@ export function everyFn<T>(
   callback: (element: T, index: number, array: T[]) => boolean
 ): boolean {
   return array.reduce((acc, element, index, array) => {
-    if (!callback(element, index, array)) acc = false;
+    if (!callback(element, index, array)) {
+      acc = false;
+      array.slice();
+    }
     return acc;
   }, true);
 }
