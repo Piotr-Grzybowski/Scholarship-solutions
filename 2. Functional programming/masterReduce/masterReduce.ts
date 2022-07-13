@@ -1,6 +1,6 @@
 export function mapFn<T, U>(
   array: Array<T>,
-  callback: <T, U>(element: T, index: number, array: T[]) => U
+  callback: (element: T, index: number, array: T[]) => U
 ): U[] {
   return array.reduce((acc, element, index, array) => {
     return [...acc, callback(element, index, array)];
@@ -27,7 +27,7 @@ export function everyFn<T>(
   }, true);
 }
 
-function someFn<T>(
+export function someFn<T>(
   array: Array<T>,
   callback: (element: T, index: number, array: T[]) => boolean
 ): boolean {
