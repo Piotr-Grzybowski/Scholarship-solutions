@@ -56,8 +56,8 @@ export const filterFn = <T>(
 
 export const reduceFn = <T, U>(
   array: Array<T>,
-  callback: (accumulator: T, element: T, index: number, array: T[]) => T,
-  initial?: T
+  callback: (accumulator: T | U, element: T, index: number, array: T[]) => U,
+  initial?: T | U
 ): T | U => {
   if (array.length < 1 && !initial) {
     throw new Error("Type Error");

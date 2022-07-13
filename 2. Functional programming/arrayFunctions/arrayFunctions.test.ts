@@ -91,7 +91,7 @@ describe("Testing array functions", () => {
     it("should return the same result as native reduce function", () => {
       const implementedResult = reduceFn(
         arrayForImplementedFunction,
-        (accumulator, element) => {
+        (accumulator: number, element: number) => {
           return element + accumulator;
         }
       );
@@ -106,7 +106,7 @@ describe("Testing array functions", () => {
     it("should return the same result as native reduce function when given initial value", () => {
       const implementedResult = reduceFn(
         arrayForImplementedFunction,
-        (accumulator, element) => {
+        (accumulator: number, element: number) => {
           return element + accumulator;
         },
         20
