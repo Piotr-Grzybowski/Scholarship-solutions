@@ -1,69 +1,66 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Operator = void 0;
-var uuid_1 = require("uuid");
-var SatelliteHandler_1 = require("../helpers/ISatelliteHandler/SatelliteHandler");
-var GroupHandler_1 = require("../helpers/IGroupHandler/GroupHandler");
-var Operator = /** @class */ (function () {
-    function Operator(firstName, lastName) {
-        this.satelliteHandler = new SatelliteHandler_1.SatelliteHandler([]);
-        this.groupHandler = new GroupHandler_1.GroupHandler([]);
+const uuid_1 = require("uuid");
+const SatelliteHandler_1 = require("../helpers/ISatelliteHandler/SatelliteHandler");
+class Operator {
+    // class hierarchy
+    constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.uuid = uuid_1.v4();
     }
-    Operator.prototype.addSatellite = function (satellite) {
+    addSatellite(satellite) {
+        SatelliteHandler_1.SatelliteHandler.getInstance().addSatellite() -  > [123];
+        SatelliteHandler_1.SatelliteHandler.getInstance().addSatellite()[123, 321];
         this.satelliteHandler.addSatellite(satellite);
-    };
-    Operator.prototype.deleteSatellite = function (satellite) {
+    }
+    deleteSatellite(satellite) {
         this.satelliteHandler.deleteSatellite(satellite);
         this.groupHandler.deleteSatelliteFromAllGroups(satellite);
-    };
-    Operator.prototype.findSatellite = function (satellite) {
+    }
+    findSatellite(satellite) {
         return this.satelliteHandler.findSatellite(satellite);
-    };
-    Operator.prototype.addGroup = function (group) {
+    }
+    addGroup(group) {
         this.groupHandler.addGroup(group);
-    };
-    Operator.prototype.deleteGroup = function (group) {
+    }
+    deleteGroup(group) {
         this.groupHandler.deleteGroup(group);
-    };
-    Operator.prototype.changeGroupName = function (group, name) {
+    }
+    changeGroupName(group, name) {
         this.groupHandler.changeGroupName(group, name);
-    };
-    Operator.prototype.findGroup = function (group) {
+    }
+    findGroup(group) {
         return this.groupHandler.findGroup(group);
-    };
-    Operator.prototype.addSatelliteToTheGroup = function (group, satellite) {
+    }
+    addSatelliteToTheGroup(group, satellite) {
         this.groupHandler.addSatelliteToTheGroup(group, satellite);
-    };
-    Operator.prototype.deleteSatelliteFromGroup = function (group, satellite) {
+    }
+    deleteSatelliteFromGroup(group, satellite) {
         this.groupHandler.deleteSatelliteFromGroup(group, satellite);
-    };
-    Operator.prototype.findSatelliteInGroup = function (group, satellite) {
+    }
+    findSatelliteInGroup(group, satellite) {
         return this.groupHandler.findSatelliteInGroup(group, satellite);
-    };
-    Operator.prototype.changePropertyValueForSatellite = function (satellite, property, value) {
+    }
+    changePropertyValueForSatellite(satellite, property, value) {
         this.satelliteHandler.changePropertyValue(satellite, property, value);
-    };
-    Operator.prototype.changePropertyValueForGroup = function (group, property, value) {
-        var _this = this;
-        var list = this.groupHandler.getGroupSatellitesList(group);
-        list.forEach(function (element) {
-            var index = _this.satelliteHandler.listOfSatellites.findIndex(function (satellite) { return satellite.uuid === element; });
-            _this.satelliteHandler.changePropertyValue(_this.satelliteHandler.listOfSatellites[index], property, value);
+    }
+    changePropertyValueForGroup(group, property, value) {
+        const list = this.groupHandler.getGroupSatellitesList(group);
+        list.forEach(element => {
+            const index = this.satelliteHandler.listOfSatellites.findIndex(satellite => satellite.uuid === element);
+            this.satelliteHandler.changePropertyValue(this.satelliteHandler.listOfSatellites[index], property, value);
         });
-    };
-    Operator.prototype.generateSatellitesListForGroup = function (group) {
-        var _this = this;
-        var list = this.groupHandler.getGroupSatellitesList(group);
-        var satellitesList = [];
-        list.forEach(function (element) {
-            var index = _this.satelliteHandler.listOfSatellites.findIndex(function (satellite) { return satellite.uuid === element; });
-            satellitesList.push(_this.satelliteHandler.listOfSatellites[index]);
+    }
+    generateSatellitesListForGroup(group) {
+        const list = this.groupHandler.getGroupSatellitesList(group);
+        let satellitesList = [];
+        list.forEach(element => {
+            const index = this.satelliteHandler.listOfSatellites.findIndex(satellite => satellite.uuid === element);
+            satellitesList.push(this.satelliteHandler.listOfSatellites[index]);
         });
         return satellitesList;
-    };
-    return Operator;
-}());
+    }
+}
 exports.Operator = Operator;

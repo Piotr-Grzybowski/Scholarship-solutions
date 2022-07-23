@@ -12,7 +12,7 @@ export function generatePesel(
   if (validator(dateOfBirth)) {
     const date = new Date(dateOfBirth);
     // add date to the pesel in proper format(yy/mm/dd)
-    let pesel = formatDateForPesel(date);
+    let pesel: string = formatDateForPesel(date);
     // add three random digits
     for (let i = 0; i < 3; i++) {
       pesel += getRandomDigit();

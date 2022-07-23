@@ -1,74 +1,73 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GroupHandler = void 0;
-var getIndex_1 = require("../getIndex");
-var GroupHandler = /** @class */ (function () {
-    function GroupHandler(listOfGroups) {
+const getIndex_1 = require("../getIndex");
+class GroupHandler {
+    constructor(listOfGroups) {
         this.listOfGroups = listOfGroups;
     }
-    GroupHandler.prototype.addGroup = function (group) {
+    addGroup(group) {
         if (!this.findGroup(group))
             this.listOfGroups.push(group);
         else
             throw new Error("Group already exist!");
-    };
-    GroupHandler.prototype.deleteGroup = function (group) {
+    }
+    deleteGroup(group) {
         if (this.checkIfGroupExist(group)) {
-            var index = getIndex_1.getIndex(this.listOfGroups, group);
+            const index = getIndex_1.getIndex(this.listOfGroups, group);
             this.listOfGroups.splice(index, 1);
         }
-    };
-    GroupHandler.prototype.findGroup = function (group) {
-        var index = getIndex_1.getIndex(this.listOfGroups, group);
+    }
+    findGroup(group) {
+        const index = getIndex_1.getIndex(this.listOfGroups, group);
         if (index !== -1)
             return group;
         return false;
-    };
-    GroupHandler.prototype.addSatelliteToTheGroup = function (group, satellite) {
+    }
+    addSatelliteToTheGroup(group, satellite) {
         if (this.checkIfGroupExist(group)) {
-            var groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
+            const groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
             this.listOfGroups[groupIndex].addSatellite(satellite);
         }
-    };
-    GroupHandler.prototype.deleteSatelliteFromGroup = function (group, satellite) {
+    }
+    deleteSatelliteFromGroup(group, satellite) {
         if (this.checkIfGroupExist(group)) {
-            var groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
+            const groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
             this.listOfGroups[groupIndex].deleteSatellite(satellite);
         }
-    };
-    GroupHandler.prototype.deleteSatelliteFromAllGroups = function (satellite) {
-        this.listOfGroups.forEach(function (group) {
+    }
+    deleteSatelliteFromAllGroups(satellite) {
+        this.listOfGroups.forEach(group => {
             if (group.findSatellite(satellite)) {
-                var index = getIndex_1.getIndex(group.listOfSatellites, satellite.uuid);
+                const index = getIndex_1.getIndex(group.listOfSatellites, satellite.uuid);
                 group.listOfSatellites.splice(index, 1);
             }
         });
-    };
-    GroupHandler.prototype.findSatelliteInGroup = function (group, satellite) {
+    }
+    findSatelliteInGroup(group, satellite) {
         if (this.checkIfGroupExist(group)) {
-            var groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
+            const groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
             return this.listOfGroups[groupIndex].findSatellite(satellite);
         }
         return false;
-    };
-    GroupHandler.prototype.changeGroupName = function (group, name) {
+    }
+    changeGroupName(group, name) {
         if (this.checkIfGroupExist(group)) {
-            var groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
+            const groupIndex = getIndex_1.getIndex(this.listOfGroups, group);
             this.listOfGroups[groupIndex].changeGroupName(name);
         }
-    };
-    GroupHandler.prototype.getGroupSatellitesList = function (group) {
+    }
+    getGroupSatellitesList(group) {
         if (this.checkIfGroupExist(group)) {
-            var index = getIndex_1.getIndex(this.listOfGroups, group);
+            const index = getIndex_1.getIndex(this.listOfGroups, group);
             return this.listOfGroups[index].listOfSatellites;
         }
         return [];
-    };
-    GroupHandler.prototype.checkIfGroupExist = function (group) {
+    }
+    checkIfGroupExist(group) {
         if (getIndex_1.getIndex(this.listOfGroups, group) !== -1)
             return true;
         throw new Error("There is no such a group!");
-    };
-    return GroupHandler;
-}());
+    }
+}
 exports.GroupHandler = GroupHandler;

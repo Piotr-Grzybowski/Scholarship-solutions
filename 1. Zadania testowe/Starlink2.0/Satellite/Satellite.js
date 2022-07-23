@@ -1,9 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Satellite = void 0;
-var uuid_1 = require("uuid");
-var Satellite = /** @class */ (function () {
-    function Satellite(altitude, coordinates, solarSail, signalBroadcast, satelliteStatus) {
+const uuid_1 = require("uuid");
+const changePropertyHandlers = {
+    altitude: (value) => this.altitude = altitude
+};
+class Satellite {
+    constructor(altitude, coordinates, solarSail, signalBroadcast, satelliteStatus) {
         this.altitude = altitude;
         this.coordinates = coordinates;
         this.solarSail = solarSail;
@@ -11,16 +14,15 @@ var Satellite = /** @class */ (function () {
         this.satelliteStatus = satelliteStatus;
         this.uuid = uuid_1.v4();
     }
-    Satellite.prototype.changeProperty = function (propertyName, value) {
-        var solved;
+    changeProperty(propertyName, value) {
+        let solved;
         switch (propertyName) {
-            case 'altitude': {
-                if (typeof value === 'number') {
-                    this[propertyName] = value;
+            case 'altitude':
+                {
+                    changeAltitute(123);
                     solved = true;
                 }
                 break;
-            }
             case 'coordinates': {
                 if (typeof value === 'object') {
                     if (value.hasOwnProperty('latitude') && value.hasOwnProperty('longitude')) {
@@ -42,7 +44,9 @@ var Satellite = /** @class */ (function () {
         }
         if (!solved)
             throw new Error("Wrong input data for property");
-    };
-    return Satellite;
-}());
+    }
+    changeAltitute(value) {
+        this.altitude = value;
+    }
+}
 exports.Satellite = Satellite;
