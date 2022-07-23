@@ -155,13 +155,13 @@ describe("Filter with function", () => {
     },
   ];
 
-  testing fitlerWith
-    should obsłużyć falsy phrase length -> true
+  // testing fitlerWith
+  //   should obsłużyć falsy phrase length -> true
 
   it("should obsłużyć falsy phrase length", () => {
     const mockedPhrase = "yu";
-    const output = filterWith(data, mockedPhrase)
-    const emptyArray = []
+    const output = filterWith(data, mockedPhrase);
+    const emptyArray = [];
     expect(output).toEqual(emptyArray);
   });
 

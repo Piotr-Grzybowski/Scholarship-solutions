@@ -44,8 +44,6 @@ describe("Satellite class", () => {
     expect(satellite.satelliteStatus).toBe("off");
   });
   it("should throw error when given data is not suitable for given property", () => {
-    const spy = jest.spyOn(console, "log").mockImplementation();
-
     expect(() => satellite.changeProperty("altitude", "on")).toThrowError(
       "Wrong input data for property"
     );

@@ -60,6 +60,7 @@ describe("testing Operator class ", () => {
     it("should change properties for a satellite", () => {
       operator.addGroup(group1);
       operator.addSatellite(satellite1);
+      operator.addSatelliteToTheGroup(group1, satellite1);
       operator.changePropertyValueForSatellite(satellite1, "altitude", 1000);
       operator.changePropertyValueForSatellite(satellite1, "coordinates", {
         latitude: 1000,
@@ -82,8 +83,8 @@ describe("testing Operator class ", () => {
     it("should change properties for a group of satellites", () => {
       operator.addGroup(group1);
       operator.addSatellite(satellite1);
-      operator.addSatellite(satellite2);
       operator.addSatelliteToTheGroup(group1, satellite1);
+      operator.addSatellite(satellite2);
       operator.addSatelliteToTheGroup(group1, satellite2);
       operator.changePropertyValueForGroup(group1, "altitude", 5000);
       operator.changePropertyValueForGroup(group1, "coordinates", {

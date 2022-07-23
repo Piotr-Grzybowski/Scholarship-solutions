@@ -1,20 +1,30 @@
-import { onOff, changeableProperties, ISatellite, changeableValues, coordinates} from '../types';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  onOff,
+  changeableProperties,
+  ISatellite,
+  changeableValues,
+  coordinates,
+} from "../types";
+import { v4 as uuidv4 } from "uuid";
 
-
-
-const changePropertyHandlers = {
-  altitude: (value ) => this.altitude = altitude
-}
+// const changePropertyHandlers = {
+//   altitude: (value) => (this.altitude = altitude),
+// };
 export class Satellite implements ISatellite {
   readonly uuid: string;
-  altitude : number;
+  altitude: number;
   coordinates: coordinates;
   solarSail: onOff;
   signalBroadcast: onOff;
   satelliteStatus: onOff;
 
-  constructor(altitude: number, coordinates: coordinates, solarSail: onOff, signalBroadcast: onOff, satelliteStatus: onOff) {
+  constructor(
+    altitude: number,
+    coordinates: coordinates,
+    solarSail: onOff,
+    signalBroadcast: onOff,
+    satelliteStatus: onOff
+  ) {
     this.altitude = altitude;
     this.coordinates = coordinates;
     this.solarSail = solarSail;
@@ -24,17 +34,23 @@ export class Satellite implements ISatellite {
   }
   changeProperty(propertyName: changeableProperties, value: changeableValues) {
     let solved;
-    switch(propertyName) {
-      case 'altitude': {
-
-        changeAltitute(123);
-          solved = true;
+    switch (propertyName) {
+      case "altitude":
+        {
+          // changeAltitute(value);
+          if (typeof value === "number") {
+            this[propertyName] = value;
+            solved = true;
+          }
         }
         break;
 
-      case 'coordinates': {
-        if (typeof value === 'object') {
-          if (value.hasOwnProperty('latitude') && value.hasOwnProperty('longitude')) {
+      case "coordinates": {
+        if (typeof value === "object") {
+          if (
+            value.hasOwnProperty("latitude") &&
+            value.hasOwnProperty("longitude")
+          ) {
             this[propertyName] = value;
             solved = true;
           }
@@ -42,8 +58,8 @@ export class Satellite implements ISatellite {
         break;
       }
       default: {
-        if (typeof value === 'string') {
-          if (value === 'on' || value === 'off') {
+        if (typeof value === "string") {
+          if (value === "on" || value === "off") {
             this[propertyName] = value;
             solved = true;
           }
@@ -54,8 +70,7 @@ export class Satellite implements ISatellite {
     if (!solved) throw new Error("Wrong input data for property");
   }
 
-
-  private changeAltitute(value) {
-    this.altitude = value
-  }
+  // private changeAltitute(value) {
+  //   this.altitude = value
+  // }
 }

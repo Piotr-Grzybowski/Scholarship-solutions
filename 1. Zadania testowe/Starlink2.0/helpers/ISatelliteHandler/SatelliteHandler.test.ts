@@ -21,7 +21,7 @@ describe("Satellite handler helper class", () => {
       signalBroadcast,
       satelliteStatus
     );
-    handler = new SatelliteHandler([]);
+    handler = SatelliteHandler.getInstance();
   });
   it("should create instance of class with proper values", () => {
     expect(handler.listOfSatellites).toHaveLength(0);

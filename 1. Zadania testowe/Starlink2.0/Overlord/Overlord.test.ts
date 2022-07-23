@@ -37,7 +37,7 @@ describe("Overlord class ", () => {
   /*
   Class Overlord should have the same functionality as Operator so first we do the same tests as we do for Operator to confirm that
   */
-  describe("should work the same like overlord", () => {
+  describe("should work the same like operator", () => {
     it("should have proper fields and empty satellite and groups list", () => {
       expect(overlord.firstName).toBe("John");
       expect(overlord.lastName).toBe("Kendedy");
@@ -156,6 +156,8 @@ describe("Overlord class ", () => {
       expect(satellite1.satelliteStatus).toBe("on");
     });
     it("should throw when wrong satellite", () => {
+      overlord.clearSatellitesList();
+      overlord.clearGroupsList();
       expect(() =>
         overlord.changeSatelliteStatus(satellite2, "off")
       ).toThrowError("There is no such a satellite!");

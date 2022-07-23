@@ -32,7 +32,7 @@ describe("Group handler helper class", () => {
     );
     group = new GroupOfSatellites("Awesome satties", []);
     group2 = new GroupOfSatellites("Cool satties", []);
-    handler = new GroupHandler([]);
+    handler = GroupHandler.getInstance();
   });
   it("should create instance of class with proper values", () => {
     expect(handler.listOfGroups).toHaveLength(0);
