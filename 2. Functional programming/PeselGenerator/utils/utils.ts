@@ -21,7 +21,7 @@ const centuries = {
   22: 60,
 };
 
-// given date returns date of birth in format yy/mm/dd
+// given date returns it as a string in format yy/mm/dd
 export function formatDateForPesel(date: Date): string {
   const century: number = Math.floor(date.getFullYear() / 100);
   const year: string =
