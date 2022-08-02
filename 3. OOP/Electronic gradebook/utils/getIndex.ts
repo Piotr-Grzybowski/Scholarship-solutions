@@ -1,8 +1,8 @@
 import { IPerson, listOfElements } from "../types";
 
-export function getIndex<T>(
+export function getByIndex<T>(
   listOfUsers: Array<listOfElements<T>>,
-  user: IPerson
+  userId: IPerson
 ): number {
-  return listOfUsers.findIndex((element) => element.idOfUser === user.uuid);
+  return listOfUsers.find((element) => element.idOfUser === userId);
 }

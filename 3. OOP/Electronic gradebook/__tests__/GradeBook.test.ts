@@ -36,7 +36,7 @@ describe("Testing gradebook", () => {
     gradebook.addParentToStudent(parent2, student2);
   });
 
-  describe("GIVEN there is a test planned", () => {
+  describe("GIVEN class test", () => {
     describe("WHEN class teacher sends messages to all students about upcoming test", () => {
       test("THEN all students are informed", () => {
         const message = {

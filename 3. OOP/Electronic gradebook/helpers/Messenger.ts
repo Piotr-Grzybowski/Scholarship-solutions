@@ -21,9 +21,8 @@ export class Messenger implements IMessenger {
     const indexOfUserInbox = getIndex(this.messagesList, person);
     if (indexOfUserInbox !== -1) {
       return this.messagesList[indexOfUserInbox].listOfElements;
-    } else {
-      return [];
     }
+    return [];
   }
 
   sendMessage(person: IPerson, message: message): void {
@@ -33,12 +32,12 @@ export class Messenger implements IMessenger {
         ...message,
         status: "unread",
       });
-    } else {
-      this.messagesList.push({
-        idOfUser: person.uuid,
-        listOfElements: [{ ...message, status: "unread" }],
-      });
+      return;
     }
+    this.messagesList.push({
+      idOfUser: person.uuid,
+      listOfElements: [{ ...message, status: "unread" }],
+    });
   }
 
   sendMessageToMany(listOfPeople: Array<IPerson>, message: message): void {

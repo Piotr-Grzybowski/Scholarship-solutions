@@ -16,7 +16,7 @@ export class Student extends Person implements IStudent {
   constructor(
     public name: string,
     public lastName: string,
-    messenger: ISingleton<IMessenger>,
+
     absences: ISingleton<IAbsences>,
     grades: ISingleton<IGrades>,
     parent: IParent | "" = ""

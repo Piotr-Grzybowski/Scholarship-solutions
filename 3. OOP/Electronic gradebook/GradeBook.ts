@@ -11,6 +11,11 @@ import {
   message,
 } from "./types";
 
+// Person
+
+// type = "ClassTeacher" | Teacher | Student | Parent
+// grantAccesstype = 1 | 1 | 2 | 3
+
 export class GradeBook implements IGradeBook {
   classTeacher: IClassTeacher;
 
@@ -26,7 +31,17 @@ export class GradeBook implements IGradeBook {
     return this.classTeacher.absences.showAbsencesOfStudent(student);
   }
 
-  addAbsenceToStudent(student: IStudent, absence: absence): void {
+  addAbsenceToStudent(
+    actionCallerId: string,
+    student: IStudent,
+    absence: absence
+  ): void {
+    const user = this.users.findById(actionCallerId);
+
+    // UsersMap.get(actionCallerId)
+
+    if (user.grantType < 2) throw new Error("wyjazd");
+
     this.classTeacher.absences.addAbsence(student, absence);
   }
 
