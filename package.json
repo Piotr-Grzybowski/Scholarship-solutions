@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest ./3.OOP/Electronic gradebook",
     "test:watch": "jest --watch"
   },
   "repository": {
