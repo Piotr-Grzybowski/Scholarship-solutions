@@ -32,15 +32,15 @@ export class GradeBook implements IGradeBook {
   }
 
   addAbsenceToStudent(
-    actionCallerId: string,
+    // actionCallerId: string,
     student: IStudent,
     absence: absence
   ): void {
-    const user = this.users.findById(actionCallerId);
+    // const user = this.users.findById(actionCallerId);
 
     // UsersMap.get(actionCallerId)
 
-    if (user.grantType < 2) throw new Error("wyjazd");
+    // if (user.grantType < 2) throw new Error("wyjazd");
 
     this.classTeacher.absences.addAbsence(student, absence);
   }

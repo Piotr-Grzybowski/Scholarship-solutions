@@ -1,4 +1,4 @@
-export function returnPromiseResult<T>(
+export function recursivePromise<T>(
   arrayOfPromises: Array<T>,
   currentIndex: number = 0,
   arrayOfResults: Array<T> = []
@@ -9,34 +9,18 @@ export function returnPromiseResult<T>(
       if (currentIndex === arrayOfPromises.length - 1) {
         return arrayOfResults;
       }
-      return returnPromiseResult(
-        arrayOfPromises,
-        ++currentIndex,
-        arrayOfResults
-      );
+      return recursivePromise(arrayOfPromises, ++currentIndex, arrayOfResults);
     })
     .catch((error) => {
-      arrayOfResults.push(error);
-      throw new recursivePromiseError(arrayOfResults, error);
+      if (!(error instanceof recursivePromiseError)) {
+        throw new recursivePromiseError(arrayOfResults, error);
+      }
+      throw error;
     });
 }
 
-export function recursivePromise<T>(arrayOfPromises: Array<Promise<T>>) {
-  return new Promise((resolve, reject) => {
-    returnPromiseResult(arrayOfPromises)
-      .then((data) => {
-        console.log("RESOLVED", data);
-        resolve(data);
-      })
-      .catch((err) => {
-        console.log("ERROR", err);
-        reject(err);
-      });
-  });
-}
-
 class recursivePromiseError extends Error {
-  public results = [];
+  public results;
   constructor(results, ...error) {
     super(...error);
     this.results = results;

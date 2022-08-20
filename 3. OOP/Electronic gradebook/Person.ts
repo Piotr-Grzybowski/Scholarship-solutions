@@ -18,6 +18,7 @@ export class Person implements IPerson {
   constructor(
     public name: string,
     public lastName: string,
+    messenger: ISingleton<IMessenger>,
     absences: ISingleton<IAbsences>,
     grades: ISingleton<IGrades>
   ) {
@@ -30,7 +31,7 @@ export class Person implements IPerson {
   setMessenger() {}
 
   readMyMessages(): message[] {
-    return this.messenger.getMyMessages(this.uuid);
+    return this.messenger.getMyMessages(this);
   }
 
   sendMessageToTeacher(teacher: ITeacher, message: message) {

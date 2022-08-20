@@ -1,6 +1,6 @@
 import { recursivePromise } from "./recursivePromise";
 
-describe("Promise methods", () => {
+describe("Recursive Promise", () => {
   // some dummy promises for tests
   const promise1 = Promise.resolve(1);
   const promise2 = Promise.resolve(true);
@@ -30,27 +30,30 @@ describe("Promise methods", () => {
   describe("Recursive Promise function", () => {
     it("should return the same result as native promise.all for resolved promises", async () => {
       expect.assertions(1);
-      const result = await Promise.all(arrayOfResolvedPromises);
+      const resultOfResolvedPromises = await Promise.all(
+        arrayOfResolvedPromises
+      );
       await expect(recursivePromise(arrayOfResolvedPromises)).resolves.toEqual(
-        result
+        resultOfResolvedPromises
       );
     });
     it("should return the same result as native promise.all when one of promises reject", async () => {
+      expect.assertions(3);
+      const resultOfPromisesWithRejection = await (
+        await Promise.all(arrayOfResolvedPromises)
+      ).slice(0, 5);
+      const errorMessage = "Bad robot";
       const rejectedPromise = new Promise((resolve, reject) => {
-        setTimeout(reject, 1000, "Bad robot");
+        setTimeout(reject, 1000, errorMessage);
       });
       const arrayOfPromisesWithRejection = [...arrayOfResolvedPromises];
       arrayOfPromisesWithRejection[5] = rejectedPromise;
-      expect.assertions(3);
       try {
-        const result = await recursivePromise(arrayOfPromisesWithRejection);
+        await recursivePromise(arrayOfPromisesWithRejection);
       } catch (err) {
-        const error = err;
-        await expect(error.results[5]).toBe("Bad robot");
-        await expect(
-          recursivePromise(arrayOfPromisesWithRejection)
-        ).rejects.toEqual(error);
-        await expect(error.results.length).toBe(6);
+        await expect(err.message).toBe(errorMessage);
+        await expect(err.results).toEqual(resultOfPromisesWithRejection);
+        await expect(err.results.length).toBe(5);
       }
     });
   });

@@ -45,7 +45,6 @@ export class Absences implements IAbsences {
   excuseTheAbsence(student: IStudent, absence: absence) {
     const indexOfStudent = getIndex(this.absencesList, student);
     if (indexOfStudent !== -1) {
-      console.log(this.absencesList[indexOfStudent]);
       const searchedAbsence = this.absencesList[
         indexOfStudent
       ].listOfElements.find(

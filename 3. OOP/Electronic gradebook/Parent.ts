@@ -16,6 +16,7 @@ export class Parent extends Person implements IParent {
   constructor(
     name: string,
     lastName: string,
+    messenger: ISingleton<IMessenger>,
     absences: ISingleton<IAbsences>,
     grades: ISingleton<IGrades>,
     child: IStudent | "" = ""
