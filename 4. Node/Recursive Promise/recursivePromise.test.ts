@@ -19,13 +19,18 @@ describe("Promise methods", () => {
     promise6,
     promise4,
     promise5,
+    promise1,
+    promise2,
+    promise3,
+    promise6,
+    promise4,
+    promise5,
   ];
 
-  describe("Promise all function", () => {
+  describe("Recursive Promise function", () => {
     it("should return the same result as native promise.all for resolved promises", async () => {
-      expect.assertions(2);
+      expect.assertions(1);
       const result = await Promise.all(arrayOfResolvedPromises);
-
       await expect(recursivePromise(arrayOfResolvedPromises)).resolves.toEqual(
         result
       );
@@ -34,19 +39,18 @@ describe("Promise methods", () => {
       const rejectedPromise = new Promise((resolve, reject) => {
         setTimeout(reject, 1000, "Bad robot");
       });
-      const arrayOfPromisesWithRejection = [
-        ...arrayOfResolvedPromises,
-        rejectedPromise,
-      ];
+      const arrayOfPromisesWithRejection = [...arrayOfResolvedPromises];
+      arrayOfPromisesWithRejection[5] = rejectedPromise;
       expect.assertions(3);
       try {
-        await Promise.all(arrayOfPromisesWithRejection);
+        const result = await recursivePromise(arrayOfPromisesWithRejection);
       } catch (err) {
         const error = err;
-        await expect(error).toBe("Bad robot");
+        await expect(error.results[5]).toBe("Bad robot");
         await expect(
           recursivePromise(arrayOfPromisesWithRejection)
         ).rejects.toEqual(error);
+        await expect(error.results.length).toBe(6);
       }
     });
   });
