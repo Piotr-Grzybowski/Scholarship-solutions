@@ -28,8 +28,10 @@ describe("Recursive Promise", () => {
   ];
 
   describe("Recursive Promise function", () => {
-    it("should return the same result as native promise.all for resolved promises", async () => {
+    it("when none of promises rejects, returns the same result as native promise.all", async () => {
+      // Function should return the same result as Promise.all just works differently
       expect.assertions(1);
+
       const resultOfResolvedPromises = await Promise.all(
         arrayOfResolvedPromises
       );
@@ -37,23 +39,27 @@ describe("Recursive Promise", () => {
         resultOfResolvedPromises
       );
     });
-    it("should return the same result as native promise.all when one of promises reject", async () => {
+    it("when one of promises rejects, returns error and results of promises already fulfilled", async () => {
       expect.assertions(3);
-      const resultOfPromisesWithRejection = await (
-        await Promise.all(arrayOfResolvedPromises)
-      ).slice(0, 5);
+
+      const indexOfRejectedPromise = 5;
       const errorMessage = "Bad robot";
       const rejectedPromise = new Promise((resolve, reject) => {
         setTimeout(reject, 1000, errorMessage);
       });
       const arrayOfPromisesWithRejection = [...arrayOfResolvedPromises];
-      arrayOfPromisesWithRejection[5] = rejectedPromise;
+      arrayOfPromisesWithRejection[indexOfRejectedPromise] = rejectedPromise;
+
+      const resultForPromisesWithRejection = await Promise.all(
+        arrayOfResolvedPromises.slice(0, indexOfRejectedPromise)
+      );
+
       try {
         await recursivePromise(arrayOfPromisesWithRejection);
       } catch (err) {
         await expect(err.message).toBe(errorMessage);
-        await expect(err.results).toEqual(resultOfPromisesWithRejection);
-        await expect(err.results.length).toBe(5);
+        await expect(err.results).toEqual(resultForPromisesWithRejection);
+        await expect(err.results.length).toBe(indexOfRejectedPromise);
       }
     });
   });
