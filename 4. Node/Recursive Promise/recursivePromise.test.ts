@@ -31,13 +31,27 @@ describe("Recursive Promise", () => {
     it("when none of promises rejects, returns the same result as native promise.all", async () => {
       // Function should return the same result as Promise.all just works differently
       expect.assertions(1);
+      // given user
+      // const user = req.body.user;
 
+      // when he tries to take the money
+      // and his cart is valid
+      //const cart = db.carts(user.cart)
+
+      // and has money in it
+      // if (cart.money > 0)
+
+      // and he requests enough money he has in the bank
+
+      // if (cart.money > 0)
       const resultOfResolvedPromises = await Promise.all(
         arrayOfResolvedPromises
       );
-      await expect(recursivePromise(arrayOfResolvedPromises)).resolves.toEqual(
-        resultOfResolvedPromises
-      );
+
+      const resolver = async () =>
+        await recursivePromise(arrayOfResolvedPromises);
+
+      expect(resolver).toEqual(resultOfResolvedPromises);
     });
     it("when one of promises rejects, returns error and results of promises already fulfilled", async () => {
       expect.assertions(3);

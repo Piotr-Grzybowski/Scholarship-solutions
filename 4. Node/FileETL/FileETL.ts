@@ -1,8 +1,8 @@
 const fs = require("fs");
 const { EOL } = require("os");
 const { pipeline } = require("stream/promises");
-const { splitChunkOnCells } = require("./transforms/splitChunkOnCells");
-const { addColumn } = require("./transforms/addColumn");
+const { splitChunkOnCellsFactory } = require("./transforms/splitChunkOnCells");
+const { addColumnFactory } = require("./transforms/addColumn");
 
 function transformFile(inputFilePath: string, outputFilePath: string): void {
   pipeline(
@@ -10,8 +10,8 @@ function transformFile(inputFilePath: string, outputFilePath: string): void {
       encoding: "UTF-8",
       highWaterMark: 10 * 1024 * 1024,
     }),
-    splitChunkOnCells,
-    addColumn,
+    splitChunkOnCellsFactory(),
+    addColumnFactory(),
     fs.createWriteStream(outputFilePath)
   )
     .then(() => {
