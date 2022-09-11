@@ -1,102 +1,98 @@
-import { createServer, IncomingMessage, ServerResponse } from "http";
-const host = "localhost";
-const port = 3000;
+import server from "./server";
 
-interface a {
-  url: string;
-  middlewares: Function[];
-  controller: Function;
-}
+const app = server();
 
-const a = [
-  {
-    url: "/one",
-    middlewares: [
-      (req, res, next) => {
-        // res.writeHead(200);
-        // res.end(JSON.stringify({ next: req.next }));
-        next(new Error("JSSSS"));
-      },
-      (req, res, next) => {
-        console.log("I am the middle man");
-        console.log(req.method);
-        req.next = "Next time";
-        next();
-      },
-    ],
-    controller: (req, res) => {
-      res.writeHead(200);
-      res.end(books);
-    },
-  },
-  {
-    url: "/two",
-    middlewares: [
-      (req, res, next) => {
-        console.log("I am the another middle man");
-        req.next = "Wonderful time in wonder land";
-        next();
-      },
-      (req, res, next) => {
-        next();
-      },
-    ],
-    controller: (req, res) => {
-      res.writeHead(200);
-      res.end(books);
-    },
-  },
-];
+// app.addController("/products/:id", "get", (req, res) => {
+//   console.log("query params", req.query);
+//   console.log("req.params", req.params);
+//   res.send(`Product id is ${req.params.id}`);
+// });
 
-function addMiddleware(
-  endpoint: string,
-  middleware: (
-    req: IncomingMessage,
-    res: ServerResponse,
-    next: (error?: Error) => void
-  ) => void
-) {
-  const route = a.find((b) => b.url === endpoint);
+// app.addController("/products", "get", (req, res) => {
+//   console.log("query params", req.query);
+//   res.send("text");
+// });
 
-  if (route) {
-    route.middlewares.push(middleware);
-  } else {
-    const newRoute = {
-      url: endpoint,
-      middlewares: [middleware],
-      controller: () => {},
-    };
-    a.push(newRoute);
-  }
-}
+// app.addController("/products", "post", (req, res) => {
+//   console.info("body", req.body);
+//   res.json(req.query);
+// });
 
-const requestListener = (req: IncomingMessage, res: ServerResponse) => {
-  res.setHeader("Content-Type", "application/json");
+// app.addController("/details/:id/new", "get", (req, res) => {
+//   console.log("body", req.body);
+//   console.log("req params", req.params);
+//   console.log("query params", req.query);
+//   res.json(`Details of products with id ${req.body.author}`);
+// });
 
-  const route = a.find((b) => b.url === req.url);
+// app.addController("/details", "get", (req, res) => {
+//   console.log("body", req.body);
+//   console.log("req params", req.params);
+//   console.log("query params", req.query);
+//   res.json(`Check the details`);
+// });
 
-  if (route) {
-    for (let middleware of route.middlewares) {
-      if (!res.writableEnded) {
-        middleware(req, res, (error?) => {
-          if (error) throw error;
-          return;
-        });
-      }
-    }
-    if (!res.writableEnded) route.controller(req, res);
-  } else {
-    res.writeHead(500);
-    res.end(JSON.stringify({ Error: "Could not find route!" }));
-  }
-};
+// app.addMiddleware("/details", "get", (req, res, next) => {
+//   next();
+// });
 
-const server = createServer(requestListener);
-server.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`);
+// app.addMiddleware("/details", "get", (req, res, next) => {
+//   console.log(req);
+//   next();
+// });
+
+// app.addController("/details", "get", (req, res) => {
+//   res.json(`Changed controller`);
+// });
+
+// app.addController("/", "get", (req, res) => {
+//   console.log("body", req.body);
+//   console.log("req params", req.params);
+//   console.log("query params", req.query);
+//   res.end("Finished");
+// });
+app.addController("/products/:id", "post", (req, res) => {
+  res.json({
+    body: req.body,
+    params: req.params,
+    query: req.query,
+  });
 });
 
-const books = JSON.stringify([
-  { title: "The Alchemist", author: "Paulo Coelho", year: 1988 },
-  { title: "The Prophet", author: "Kahlil Gibran", year: 1923 },
-]);
+app.addMiddleware("/products/:id", "post", (req, res, next) => {
+  if (req.params.id === "10") {
+    req.params.id = "1000";
+  }
+  next();
+});
+
+app.addController("/products", "post", (req, res) => {
+  res.send("Products list");
+});
+
+app.addMiddleware("/products", "post", (req, res, next) => {
+  type product = {
+    name: string;
+    brand: string;
+    price: number;
+  };
+
+  let products: product[] = [];
+  if (Object.keys(req.body).length > 0) {
+    const name: string = req.body.name;
+    const brand: string = req.body.brand;
+    const price: number = req.body.price;
+
+    products.push({ name, brand, price });
+
+    res.writeHead(200).json(products);
+  } else next();
+});
+
+app.addController("/", "get", (req, res) => {
+  res.end("Finished");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on 3000");
+});
