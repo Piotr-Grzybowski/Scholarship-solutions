@@ -1,6 +1,6 @@
-import { IncomingMessage } from "http";
+import { IParsedRequest } from "types";
 
-export function getRequestBody(req: IncomingMessage) {
+export function getRequestBody(req: IParsedRequest) {
   return new Promise((resolve, reject) => {
     let body = "";
     req.on("data", (chunk) => {

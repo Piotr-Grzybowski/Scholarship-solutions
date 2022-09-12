@@ -1,9 +1,8 @@
-import { IncomingMessage } from "http";
 import { IParsedRequest } from "../types";
 import { getRequestBody } from "./requestBodyParser";
 
 export async function requestParser(
-  req: IncomingMessage,
+  req: IParsedRequest,
   query,
   params
 ): Promise<IParsedRequest> {

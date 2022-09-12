@@ -1,4 +1,4 @@
-import http, { IncomingMessage, ServerResponse } from "http";
+import http from "http";
 import url from "url";
 import {
   middleware,
@@ -15,12 +15,12 @@ class myServer {
   private routeTable = {};
 
   server = http.createServer(
-    async (req: IncomingMessage, res: ServerResponse) => {
+    async (req: IParsedRequest, res: IParsedResponse) => {
       let match = false;
       if (req.url && req.method) {
         for (const route of Object.keys(this.routeTable)) {
           const { pathname, query } = url.parse(req.url, true);
-          const params = paramsParser(pathname!, route);
+          const params = paramsParser(pathname, route);
 
           if (
             (pathname === route || params) &&
