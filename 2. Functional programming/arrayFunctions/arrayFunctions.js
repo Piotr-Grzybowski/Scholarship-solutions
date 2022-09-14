@@ -1,31 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.someFn = exports.everyFn = exports.reduceFn = exports.filterFn = exports.entriesFnGen = exports.entriesFn = exports.mapFn = exports.forEachFn = void 0;
-exports.forEachFn = (array, callback) => {
+const forEachFn = (array, callback) => {
     for (let i = 0; i < array.length; i++) {
         callback(array[i], i, array);
     }
 };
-exports.mapFn = (array, callback) => {
+exports.forEachFn = forEachFn;
+const mapFn = (array, callback) => {
     let newArray = [];
     for (let i = 0; i < array.length; i++) {
         newArray.push(callback(array[i], i, array));
     }
     return newArray;
 };
+exports.mapFn = mapFn;
 /**
  * Method entries() returns iterator with method next that lets us access next element
  * Every element has format {done: false/true, value: [index, value]}
  * Value of done define if iteration is finished or not
  * Under value property we can find an array with index and value of current element
  */
-exports.entriesFn = (array) => {
+const entriesFn = (array) => {
     const newArray = [];
     for (let index = 0; index < array.length; index++) {
         newArray.push([index, array[index]]);
     }
     return newArray[Symbol.iterator]();
 };
+exports.entriesFn = entriesFn;
 /**
  * Solution of method entries() but using generator instead Symbol.iterator method
  */
@@ -34,7 +37,7 @@ function* entriesFnGen(array) {
         yield [i, array[i]];
 }
 exports.entriesFnGen = entriesFnGen;
-exports.filterFn = (array, callback) => {
+const filterFn = (array, callback) => {
     let newArray = [];
     for (let i = 0; i < array.length; i++) {
         if (callback(array[i], i, array)) {
@@ -43,7 +46,8 @@ exports.filterFn = (array, callback) => {
     }
     return newArray;
 };
-exports.reduceFn = (array, callback, initial) => {
+exports.filterFn = filterFn;
+const reduceFn = (array, callback, initial) => {
     if (array.length < 1 && !initial) {
         throw new Error("Type Error");
     }
@@ -54,7 +58,8 @@ exports.reduceFn = (array, callback, initial) => {
     }
     return accumulator;
 };
-exports.everyFn = (array, callback) => {
+exports.reduceFn = reduceFn;
+const everyFn = (array, callback) => {
     for (let i = 0; i < array.length; i++) {
         if (!callback(array[i], i, array)) {
             return false;
@@ -62,7 +67,8 @@ exports.everyFn = (array, callback) => {
     }
     return true;
 };
-exports.someFn = (array, callback) => {
+exports.everyFn = everyFn;
+const someFn = (array, callback) => {
     for (let i = 0; i < array.length; i++) {
         if (!callback(array[i], i, array)) {
             return true;
@@ -70,3 +76,4 @@ exports.someFn = (array, callback) => {
     }
     return false;
 };
+exports.someFn = someFn;

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ClassTeacher = exports.Parent = exports.Student = exports.Teacher = void 0;
+var Teacher_1 = require("./Teacher");
+Object.defineProperty(exports, "Teacher", { enumerable: true, get: function () { return Teacher_1.Teacher; } });
+var Student_1 = require("./Student");
+Object.defineProperty(exports, "Student", { enumerable: true, get: function () { return Student_1.Student; } });
+var Parent_1 = require("./Parent");
+Object.defineProperty(exports, "Parent", { enumerable: true, get: function () { return Parent_1.Parent; } });
+var ClassTeacher_1 = require("./ClassTeacher");
+Object.defineProperty(exports, "ClassTeacher", { enumerable: true, get: function () { return ClassTeacher_1.ClassTeacher; } });

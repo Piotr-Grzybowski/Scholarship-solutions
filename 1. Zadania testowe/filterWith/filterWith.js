@@ -6,7 +6,7 @@
 // }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.filterWith = void 0;
-exports.filterWith = (arr, phrase) => {
+const filterWith = (arr, phrase) => {
     if (typeof phrase === 'string') {
         if (phrase.length <= 2)
             return [];
@@ -19,6 +19,7 @@ exports.filterWith = (arr, phrase) => {
         return false;
     });
 };
+exports.filterWith = filterWith;
 const isObject = (obj) => {
     return Object.prototype.toString.call(obj) === '[object Object]';
 };

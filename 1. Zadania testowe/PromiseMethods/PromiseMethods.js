@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.promiseLastAsync = exports.promiseLast = exports.promiseIgnoreErrorsAsync = exports.promiseIgnoreErrors = exports.promiseRaceAsync = exports.promiseRace = exports.promiseAllAsync = exports.promiseAll = void 0;
-exports.promiseAll = (arrayOfPromises) => {
+const promiseAll = (arrayOfPromises) => {
     let arrayOfResults = [];
     let resolvedPromises = 0;
     return new Promise((resolve, reject) => {
@@ -17,7 +17,8 @@ exports.promiseAll = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseAllAsync = (arrayOfPromises) => {
+exports.promiseAll = promiseAll;
+const promiseAllAsync = (arrayOfPromises) => {
     let arrayOfResults = [];
     let resolvedPromises = 0;
     return new Promise((resolve, reject) => {
@@ -35,7 +36,8 @@ exports.promiseAllAsync = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseRace = (arrayOfPromises) => {
+exports.promiseAllAsync = promiseAllAsync;
+const promiseRace = (arrayOfPromises) => {
     return new Promise((resolve, reject) => {
         arrayOfPromises.forEach((promise) => {
             Promise.resolve(promise)
@@ -48,7 +50,8 @@ exports.promiseRace = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseRaceAsync = (arrayOfPromises) => {
+exports.promiseRace = promiseRace;
+const promiseRaceAsync = (arrayOfPromises) => {
     return new Promise((resolve, reject) => {
         arrayOfPromises.forEach(async (promise) => {
             try {
@@ -61,7 +64,8 @@ exports.promiseRaceAsync = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseIgnoreErrors = (arrayOfPromises) => {
+exports.promiseRaceAsync = promiseRaceAsync;
+const promiseIgnoreErrors = (arrayOfPromises) => {
     let arrayOfResults = [];
     let resolvedPromises = 0;
     return new Promise((resolve, reject) => {
@@ -81,7 +85,8 @@ exports.promiseIgnoreErrors = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseIgnoreErrorsAsync = (arrayOfPromises) => {
+exports.promiseIgnoreErrors = promiseIgnoreErrors;
+const promiseIgnoreErrorsAsync = (arrayOfPromises) => {
     let arrayOfResults = [];
     let resolvedPromises = 0;
     return new Promise((resolve, reject) => {
@@ -101,7 +106,8 @@ exports.promiseIgnoreErrorsAsync = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseLast = (arrayOfPromises) => {
+exports.promiseIgnoreErrorsAsync = promiseIgnoreErrorsAsync;
+const promiseLast = (arrayOfPromises) => {
     let counter = 0;
     let error;
     return new Promise((resolve, reject) => {
@@ -123,7 +129,8 @@ exports.promiseLast = (arrayOfPromises) => {
         });
     });
 };
-exports.promiseLastAsync = (arrayOfPromises) => {
+exports.promiseLast = promiseLast;
+const promiseLastAsync = (arrayOfPromises) => {
     let counter = 0;
     let error;
     return new Promise((resolve, reject) => {
@@ -145,3 +152,4 @@ exports.promiseLastAsync = (arrayOfPromises) => {
         });
     });
 };
+exports.promiseLastAsync = promiseLastAsync;
