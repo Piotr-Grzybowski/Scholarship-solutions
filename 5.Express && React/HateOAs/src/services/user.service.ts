@@ -9,20 +9,30 @@ export const findAll = async () => {
 };
 
 export const findUser = async (userId: string) => {
-  const user = await db.getObject<User>("/" + userId);
-  return user;
+  const index = await db.getIndex(`/users`, userId);
+  if (index !== -1) {
+    const user = await db.getObject<User>(`/users[${index}]`);
+    return user;
+  }
 };
 
 export const addUser = async (user: BasicUser) => {
   const id = uuid();
-  await db.push("/" + id, { ...user, id: id });
+  await db.push("/users[]", { ...user, id: id });
 };
 
 export const deleteUser = async (userId: string) => {
-  await db.delete("/" + userId);
-  return;
+  const index = await db.getIndex(`/users`, userId);
+  if (index !== -1) {
+    await db.delete(`/users[${index}]`);
+    return;
+  }
 };
 
 export const editUser = async (userId: string, user: BasicUser) => {
-  await db.push("/" + userId, user);
+  const index = await db.getIndex(`/users`, userId);
+  if (index !== -1) {
+    await db.push(`/users[${index}]`, user);
+    return;
+  }
 };

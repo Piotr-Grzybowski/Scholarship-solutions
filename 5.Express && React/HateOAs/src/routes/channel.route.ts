@@ -9,28 +9,8 @@ export const channelsRouter = express.Router({ mergeParams: true });
 
 channelsRouter.get("/", async (req: Request, res: ResponseWithHateoas) => {
   try {
-    console.log(parseHateoasLinks(req));
-    const links = parseHateoasLinks(req);
     const channels: Channel[] = await ChannelService.findAll(req.params.id);
-    res.status(200).json(channels, [
-      { rel: "self", method: "GET", href: "/user/:id/channels" },
-      { rel: "self", method: "POST", href: "/user/:id/channels" },
-      {
-        rel: "get single channel",
-        method: "GET",
-        href: "/user/:id/channels/:channelId",
-      },
-      {
-        rel: "edit single channel",
-        method: "PUT",
-        href: "/user/:id/channels/:channelId",
-      },
-      {
-        rel: "delete single channel",
-        method: "DELETE",
-        href: "/user/:id/:channelId",
-      },
-    ]);
+    res.status(200).json({ channels }, parseHateoasLinks(req));
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -46,7 +26,7 @@ channelsRouter.get(
         userId,
         channelId
       );
-      res.status(200).json(channel, parseHateoasLinks(req));
+      res.status(200).json({ channel }, parseHateoasLinks(req));
     } catch (err) {
       res.status(500).send(err.message);
     }
@@ -57,8 +37,8 @@ channelsRouter.post("/", async (req: Request, res: ResponseWithHateoas) => {
   try {
     const userId = req.params.id;
     const channel: BasicChannel = req.body;
-    await ChannelService.addChannel(userId, channel);
-    res.status(200).json(channel, parseHateoasLinks(req));
+    const addedChannel = await ChannelService.addChannel(userId, channel);
+    res.status(201).json(addedChannel, parseHateoasLinks(req));
   } catch (err) {
     res.status(500).send(err.message);
   }

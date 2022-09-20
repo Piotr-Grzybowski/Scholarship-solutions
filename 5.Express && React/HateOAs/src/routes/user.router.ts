@@ -20,7 +20,7 @@ usersRouter.get("/:id", async (req: Request, res: ResponseWithHateoas) => {
   try {
     const id: string = req.params.id;
     const user: User = await UserService.findUser(id);
-    res.status(200).json(user, parseHateoasLinks(req));
+    res.status(200).json({ user }, parseHateoasLinks(req));
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -41,7 +41,7 @@ usersRouter.put("/:id", async (req: Request, res: ResponseWithHateoas) => {
     const id: string = req.params.id;
     const user: BasicUser = req.body;
     await UserService.editUser(id, user);
-    res.status(200).json(user, parseHateoasLinks(req));
+    res.status(201).json(user, parseHateoasLinks(req));
   } catch (err) {
     res.status(500).send(err.message);
   }
