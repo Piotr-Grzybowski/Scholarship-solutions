@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { element } from "../types";
 
-function Search() {
+function SearchBar() {
   const [phrase, setPhrase] = useState("");
   const [foundItem, setFoundItem] = useState<element[]>([]);
 
@@ -62,21 +62,9 @@ function Search() {
       }
     });
   }
-
-  // function boldTheText(array: element[]) {
-  //   let newArray = [];
-  //   for (let element of array) {
-  //     newArray.push({
-  //       name: element.name.replaceAll("Word", "<span>Some!</span>"),
-  //       regularPrice: element.regularPrice,
-  //       salePrice: element.salePrice,
-  //     });
-  //   }
-  //   return newArray;
-  // }
 }
 
-export default Search;
+export default SearchBar;
 
 const searchData = [
   {
