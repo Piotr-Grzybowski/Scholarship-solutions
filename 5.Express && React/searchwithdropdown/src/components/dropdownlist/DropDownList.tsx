@@ -4,7 +4,7 @@ import NotFound from "../notfound/NotFound";
 import { listOfElements } from "../types";
 import List from "@mui/material/List";
 
-function DropDownList({ elements }: listOfElements) {
+function DropDownList({ elements, phrase }: listOfElements) {
   return (
     <List
       sx={{ mt: 1, width: "100%", maxWidth: 550, bgcolor: "#fff" }}
@@ -14,7 +14,11 @@ function DropDownList({ elements }: listOfElements) {
         elements.map((item, index) => {
           return (
             <div>
-              <DropDownItem {...item} key={index}></DropDownItem>
+              <DropDownItem
+                {...item}
+                key={index}
+                phrase={phrase}
+              ></DropDownItem>
               <Divider />
             </div>
           );

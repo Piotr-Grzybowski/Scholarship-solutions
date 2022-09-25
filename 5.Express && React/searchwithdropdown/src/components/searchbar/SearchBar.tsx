@@ -37,7 +37,7 @@ function Search() {
         </IconButton>
       </Paper>
       {phrase.length > 3 ? (
-        <DropDownList elements={foundItem}></DropDownList>
+        <DropDownList elements={foundItem} phrase={phrase}></DropDownList>
       ) : (
         ""
       )}
@@ -49,25 +49,31 @@ function Search() {
   }
 
   function searchForPhrase(phrase: string) {
-    return searchData.filter((element) => {
+    const data = searchData.filter((element) => {
       return element.name.toLowerCase().includes(phrase.toLowerCase());
+    });
+    return data.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      } else if (a.name < b.name) {
+        return -1;
+      } else {
+        return 0;
+      }
     });
   }
 
-  function boldTheText(array: element[]) {
-    let newArray = [];
-    for (let element of array) {
-      newArray.push({
-        name: element.name.replaceAll(
-          "Word",
-          `<span className="bold>Some!</span>"`
-        ),
-        regularPrice: element.regularPrice,
-        salePrice: element.salePrice,
-      });
-    }
-    return newArray;
-  }
+  // function boldTheText(array: element[]) {
+  //   let newArray = [];
+  //   for (let element of array) {
+  //     newArray.push({
+  //       name: element.name.replaceAll("Word", "<span>Some!</span>"),
+  //       regularPrice: element.regularPrice,
+  //       salePrice: element.salePrice,
+  //     });
+  //   }
+  //   return newArray;
+  // }
 }
 
 export default Search;
