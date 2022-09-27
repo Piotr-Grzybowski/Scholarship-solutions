@@ -5,23 +5,27 @@ import { score } from "../types";
 function Score({ score }: score) {
   const roundedScore = Math.floor(score);
   const amountOfStars = 5;
-  let stars = [];
-
-  for (let i = 0; i < amountOfStars; i++) {
-    if (i < roundedScore) {
-      stars.push(<YellowStar key={i} />);
-    } else {
-      stars.push(<GrayStar key={i} />);
-    }
-  }
+  const stars = createStars(roundedScore, amountOfStars);
 
   return (
-    <div>
+    <div data-testid="score">
       {stars.map((star) => {
         return star;
       })}
     </div>
   );
+}
+
+function createStars(score: number, amountOfStars: number) {
+  let stars = [];
+  for (let i = 0; i < amountOfStars; i++) {
+    if (i < score) {
+      stars.push(<YellowStar key={i} data-testid={`yellow-star`} />);
+    } else {
+      stars.push(<GrayStar key={i} data-testid={`gray-star`} />);
+    }
+  }
+  return stars;
 }
 
 export default Score;

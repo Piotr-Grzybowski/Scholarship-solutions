@@ -1,0 +1,616 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AverageScore when given data Ratings List should create proper snapshot 1`] = `
+<ul
+  className="MuiList-root MuiList-padding css-341eoo-MuiList-root"
+  data-testid="ratings-list"
+>
+  <div
+    data-testid="average-score"
+  >
+    <span>
+      Average score: 
+    </span>
+    <div
+      data-testid="score"
+    >
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="gray-star"
+      >
+        grayStar.svg
+      </svg>
+      <svg
+        data-testid="gray-star"
+      >
+        grayStar.svg
+      </svg>
+    </div>
+    <hr />
+  </div>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Kellie Mccormick
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Mollit anim adipisicing adipisicing officia. Reprehenderit cupidatat qui amet pariatur voluptate commodo ea culpa aute i...
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Allison Ratliff
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Do ipsum fugiat nisi ea laboris sit pariatur aliqua proident. Qui cillum veniam incididunt cupidatat mollit commodo temp...
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Mccray Byers
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Lorem minim pariatur deserunt laborum cillum enim velit veniam duis tempor dolor consectetur incididunt. Ullamco velit e...
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Boyd Forbes
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Mollit id nulla consectetur ipsum proident culpa ea est sit. Consectetur sint sit cupidatat incididunt....
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Millicent Larsen
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Est ut dolor consequat sunt occaecat adipisicing mollit aute. Adipisicing sunt nisi irure et irure mollit ex incididunt....
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Odessa Greer
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Aliqua voluptate duis dolore non culpa elit officia tempor. Ex proident incididunt Lorem amet non proident....
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Alejandra Petersen
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Aliquip duis et eiusmod aute nostrud nisi in do. Reprehenderit minim et reprehenderit eiusmod proident excepteur occaeca...
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Solis Donovan
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Enim in nisi sunt est velit aliquip. Aliqua pariatur nostrud exercitation esse voluptate mollit in eiusmod mollit....
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="gray-star"
+        >
+          grayStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Neal Sims
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Eu magna Lorem excepteur non adipisicing aliqua laboris minim nisi tempor cillum magna nostrud. Irure enim amet aute ips...
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+    data-testid="rating"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+    >
+      <div
+        data-testid="score"
+      >
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+        <svg
+          data-testid="yellow-star"
+        >
+          yellowStar.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Alisa Mcneil
+      </span>
+    </div>
+    <div
+      className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Tempor deserunt officia laboris excepteur laboris eu laboris minim occaecat. Duis amet enim pariatur nostrud adipisicing...
+      </span>
+    </div>
+  </li>
+</ul>
+`;

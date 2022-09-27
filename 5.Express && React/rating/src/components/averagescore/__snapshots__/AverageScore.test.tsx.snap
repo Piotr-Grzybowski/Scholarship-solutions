@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AverageScore when given data average score should create proper snapshot 1`] = `
+<div
+  data-testid="average-score"
+>
+  <span>
+    Average score: 
+  </span>
+  <div
+    data-testid="score"
+  >
+    <svg
+      data-testid="yellow-star"
+    >
+      yellowStar.svg
+    </svg>
+    <svg
+      data-testid="yellow-star"
+    >
+      yellowStar.svg
+    </svg>
+    <svg
+      data-testid="gray-star"
+    >
+      grayStar.svg
+    </svg>
+    <svg
+      data-testid="gray-star"
+    >
+      grayStar.svg
+    </svg>
+    <svg
+      data-testid="gray-star"
+    >
+      grayStar.svg
+    </svg>
+  </div>
+  <hr />
+</div>
+`;

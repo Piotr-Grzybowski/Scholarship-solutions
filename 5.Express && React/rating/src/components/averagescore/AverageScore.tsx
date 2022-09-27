@@ -3,7 +3,7 @@ import Score from "../score/Score";
 
 function AverageScore({ ratings }: ratings) {
   return (
-    <div>
+    <div data-testid="average-score">
       <span>Average score: </span>
       <Score score={getAverageScore(ratings)}></Score>
       <hr></hr>

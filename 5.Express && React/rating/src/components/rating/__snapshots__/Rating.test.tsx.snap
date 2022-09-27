@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AverageScore when given result Rating should render with proper data 1`] = `
+<li
+  className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-q5n5zf-MuiListItem-root"
+  data-testid="rating"
+  disabled={false}
+>
+  <div
+    className="MuiListItemIcon-root css-18jj6cy-MuiListItemIcon-root"
+  >
+    <div
+      data-testid="score"
+    >
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="yellow-star"
+      >
+        yellowStar.svg
+      </svg>
+      <svg
+        data-testid="gray-star"
+      >
+        grayStar.svg
+      </svg>
+      <svg
+        data-testid="gray-star"
+      >
+        grayStar.svg
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiListItemText-root css-1owdhls-MuiListItemText-root"
+  >
+    <span
+      className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+    >
+      John
+    </span>
+  </div>
+  <div
+    className="MuiListItemText-root css-16jj254-MuiListItemText-root"
+  >
+    <span
+      className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+    >
+      Nice place to take a quick sip of tea...
+    </span>
+  </div>
+</li>
+`;

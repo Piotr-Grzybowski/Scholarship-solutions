@@ -6,7 +6,10 @@ import ListItemText from "@mui/material/ListItemText";
 
 function Rating({ name, score, content }: rating) {
   return (
-    <ListItem sx={{ display: "flex", justifyContent: "space-evenly" }}>
+    <ListItem
+      sx={{ display: "flex", justifyContent: "space-evenly" }}
+      data-testid="rating"
+    >
       <ListItemIcon sx={{ marginRight: "10px", maxWidth: "25%" }}>
         <Score score={score}></Score>
       </ListItemIcon>
